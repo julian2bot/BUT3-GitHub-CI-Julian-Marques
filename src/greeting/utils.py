@@ -1,6 +1,7 @@
 """ Utils.py les fonctions utiles"""
 
-def add(a:int, b:int)->int:
+
+def add(a: int, b: int) -> int:
     """
     addition de deux nombre
     Args:
