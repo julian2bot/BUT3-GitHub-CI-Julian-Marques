@@ -1,0 +1,12 @@
+[run]
+source = src
+
+[report]
+omit = 
+    */__init__.py
+    */tests/*
+
+precision=90
+
+show_missing = True
+skip_covered = False

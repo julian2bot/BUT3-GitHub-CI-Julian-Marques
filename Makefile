@@ -1,4 +1,4 @@
-.PHONY: cov lint flake8 pytest all
+.PHONY: cov covV2 lint flake8 pytest all
 
 cov:
 	python -m pytest --cov=src/greeting
@@ -13,4 +13,7 @@ flake8:
 pytest:
 	python -m pytest 
 
-all: cov lint flake8 pytest
+covV2: 
+	python -m pytest --cov --cov-report=term-missing
+
+all: cov covV2 lint flake8 pytest
