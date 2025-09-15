@@ -33,12 +33,12 @@ def test_add() -> bool:
     assert add(5, 7) == 12
 
 
-# def test_sub() -> bool:
-#     """
-#     test addition de deux nombre
-#     Args:
-#         None
-#     return:
-#         Value(bool): resultat de l'assert
-#     """
-#     assert sub(13, 1) == 12
+def test_sub() -> bool:
+    """
+    test addition de deux nombre
+    Args:
+        None
+    return:
+        Value(bool): resultat de l'assert
+    """
+    assert sub(13, 1) == 12
