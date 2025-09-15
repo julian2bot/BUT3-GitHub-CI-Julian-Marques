@@ -1,4 +1,4 @@
-""" module main"""
+""" module main """
 
 
 def greet(name: str) -> str:
@@ -12,5 +12,5 @@ def greet(name: str) -> str:
     return f"Hello, {name}!"
 
 
-if __name__ == "__main__":
+if __name__ == "__main__":  # pragma: no cover
     print(greet("GitLab CI/CD"))
