@@ -1,15 +1,31 @@
-import pytest 
-import os 
+""" Test main """
+# import pytest
 import sys
-sys.path.append(os.getcwd())
-from src.greeting.main import greet   
-from src.greeting.utils import add   
+import os
 
-def test_greet(): 
+sys.path.append(os.getcwd())
+
+# pylint: disable=import-error, wrong-import-position
+
+from src.greeting.utils import add 
+from src.greeting.main import greet
+
+def test_greet()->bool:
+    """
+    test greet 
+    Args:
+        None
+    return:
+        Value(bool): resultat de l'assert
+    """
     assert greet("World") == "Hello, World!"
 
-def test_add(): 
-    assert add(5,7) == 12  
-
-
-    
+def test_add()->bool:
+    """
+    test addition de deux nombre
+    Args:
+        None
+    return:
+        Value(bool): resultat de l'assert
+    """
+    assert add(5,7) == 12
