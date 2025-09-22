@@ -2,13 +2,13 @@ FROM node:latest AS build
 
 WORKDIR /app
 
-COPY package.json yarn.lock ./
+COPY package.json ./
 
-RUN yarn install
+RUN npm install
 
 COPY . .
 
-RUN yarn run build
+RUN npm run build
 
 FROM ghcr.io/static-web-server/static-web-server:2
 
