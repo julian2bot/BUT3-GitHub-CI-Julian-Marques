@@ -69,6 +69,7 @@ jobs:
 
       - name: Install Ansible
         run: |
+        
           pip install ansible
 
       - name: Run Ansible Playbook

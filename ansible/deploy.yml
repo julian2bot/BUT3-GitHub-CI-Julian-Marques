@@ -1,5 +1,5 @@
 - name: Déploiement Docker
-  hosts: localhost
+  hosts: apps
   vars_files:
     - group_vars/apps.yml
     
