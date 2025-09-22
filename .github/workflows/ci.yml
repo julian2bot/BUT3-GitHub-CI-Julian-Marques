@@ -73,7 +73,8 @@ jobs:
 
       - name: Run Ansible Playbook
         run: |
-          ansible-playbook ansible/deploy.yml \
-            -i ansible/inventory.ini \
+          cd ansible/ 
+          ansible-playbook deploy.yml \
+            -i inventory.ini \
             -e "image_tag=${{ github.sha }}" \
             -e "registry_password=${{ secrets.PWD }}"
