@@ -1,7 +1,7 @@
 services:
   julian-marques-frontend:
     container_name: julian-marques-frontend
-    image: docker.iut.arcanit.io/dev-julian-marques.iut.arcanit.io:latest
+    image: docker.iut.arcanit.io/dev-julian-marques-frontend:latest
     restart: always
     networks: [traefik]
     labels:
