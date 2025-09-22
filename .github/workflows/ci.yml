@@ -25,6 +25,27 @@ jobs:
           file: ./frontend/web.dockerfile
           push: true
           tags: |
-            ${{ secrets.ADRESSE }}:latest
-            ${{ secrets.ADRESSE }}:${{ github.sha }}
+            ${{ secrets.ADRESSE }}-frontend:latest
+            ${{ secrets.ADRESSE }}-frontend:${{ github.sha }}
 
+  build-backend:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Login to registry
+        uses: docker/login-action@v2
+        with:
+          registry: docker.iut.arcanit.io
+          username: ${{ secrets.NOM }}
+          password: ${{ secrets.PWD }}
+
+      - name: Build and push backend image
+        uses: docker/build-push-action@v6
+        with:
+          context: ./backend
+          file: ./backend/api.dockerfile
+          push: true
+          tags: |
+            ${{ secrets.ADRESSE }}-backend:latest
+            ${{ secrets.ADRESSE }}-backend:${{ github.sha }}
