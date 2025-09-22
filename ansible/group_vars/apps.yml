@@ -1,0 +1,7 @@
+app_directory: /home/student/apps/marques-julian-dev
+
+registry: docker.iut.arcanit.io
+registry_login: admin
+registry_password: secret # This will be overriden from GitHub secrets
+
+image_tag: latest
