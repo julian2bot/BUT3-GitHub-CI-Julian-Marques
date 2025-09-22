@@ -13,3 +13,7 @@ RUN npm run build
 FROM ghcr.io/static-web-server/static-web-server:2
 
 COPY --from=build /app/dist /app
+
+EXPOSE 80
+
+CMD ["/app"]
