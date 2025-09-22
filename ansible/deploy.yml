@@ -27,10 +27,10 @@
 
     - name: Puller les images Docker avec docker-compose
       command:
-        cmd: "docker-compose pull"
+        cmd: "docker compose pull"
         chdir: "{{ app_directory }}"
 
     - name: Démarrer les containers Docker
       command:
-        cmd: "docker-compose up -d --remove-orphans"
+        cmd: "docker compose up -d --remove-orphans"
         chdir: "{{ app_directory }}"
