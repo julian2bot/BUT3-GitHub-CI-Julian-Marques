@@ -1,4 +1,4 @@
-app_directory: /home/student/apps/marques-julian-dev
+app_directory: /home/student/apps/julian-marques-dev
 
 registry: docker.iut.arcanit.io
 registry_login: admin
