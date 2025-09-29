@@ -1,5 +1,5 @@
 services:
-  julian-marques-frontend:
+  julian-marques-frontend-{{ env }}:
     container_name: julian-marques-frontend
     image: docker.iut.arcanit.io/julian-marques-frontend:latest
     restart: always
@@ -11,7 +11,7 @@ services:
       - "traefik.http.routers.{{ env }}-julian-marques-frontend.tls=true"
       - "traefik.http.services.{{ env }}-julian-marques-frontend.loadbalancer.server.port=80"
 
-  julian-marques-backend:
+  julian-marques-backend-{{ env }}:
     container_name: julian-marques-backend
     image: docker.iut.arcanit.io/julian-marques-backend:latest
     restart: always
