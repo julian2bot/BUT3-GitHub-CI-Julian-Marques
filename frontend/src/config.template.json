@@ -1,0 +1,5 @@
+{
+  "API_BASE_URL": "https://__ENV__-api-julian-marques.iut.arcanit.io",
+  "FIRSTNAME": "Julian serv __ENV__",
+  "LASTNAME": "Marques serv __ENV__"
+}

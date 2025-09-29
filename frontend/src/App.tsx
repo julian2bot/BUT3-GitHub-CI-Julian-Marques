@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Constants } from "./constants.template";
+import { Constants } from "./constants";
 
 interface AppProps { }
 
