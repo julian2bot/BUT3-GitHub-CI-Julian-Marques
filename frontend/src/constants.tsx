@@ -46,4 +46,4 @@ export class Constants {
     }
 }
 
-Constants.loadConfig().catch(console.error);
+// Constants.loadConfig().catch(console.error);
