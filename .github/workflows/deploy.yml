@@ -42,4 +42,4 @@ jobs:
         run: |
           cd ansible/
           ansible-playbook -i ${{ inputs.inventory }} deploy.yml \
-            --extra-vars "env=${{ inputs.environment }} image_tag=${{ github.sha }} registry_password=${{ secrets.DOCKER_PASSWORD }}"
+            --extra-vars "env=${{ inputs.environment }} image_tag=${{ github.sha }} registry_password=${{ secrets.PWD }}"
