@@ -1,5 +1,4 @@
-# .github/workflows/deploy.yml
-name: Deploy
+name: deploy
 
 on:
   workflow_call:
@@ -7,42 +6,40 @@ on:
       environment:
         required: true
         type: string
-      domain_prefix:
+      inventory:
         required: true
         type: string
     secrets:
-      SSH_KEY:
+      SSH:
         required: true
-      SERVER_HOST:
+      DOCKER_PASSWORD:
         required: true
-      SERVER_USER:
+      DOCKER_USERNAME:
+        required: true
+      DOCKER_ADRESSE:
         required: true
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    environment: ${{ inputs.environment }}
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
 
       - name: Set up SSH key
         run: |
           mkdir -p ~/.ssh
           echo "${{ secrets.SSH }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan -p 62215 dev15.iut.arcanit.io >> ~/.ssh/known_hosts
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.SSH }}
+          ssh-keyscan -p 62218 dev18.iut.arcanit.io >> ~/.ssh/known_hosts
 
-      - name: Install Ansible
+      - name: Installer Ansible et la collection Docker
         run: |
-        
-          pip install ansible
+          pip3 install ansible
+          ansible-galaxy collection install community.docker
 
-      - name: Run Ansible Playbook
+      - name: Lancer le playbook
         run: |
-          cd ansible/ 
-          ansible-playbook deploy.yml \
-            -e "image_tag=${{ github.sha }}" \
-            -e "registry_password=${{ secrets.PWD }}"
+          cd ansible/
+          ansible-playbook -i ${{ inputs.inventory }} deploy.yml \
+            --extra-vars "env=${{ inputs.environment }} image_tag=${{ github.sha }} registry_password=${{ secrets.DOCKER_PASSWORD }}"
