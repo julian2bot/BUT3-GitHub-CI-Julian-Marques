@@ -18,7 +18,7 @@ COPY --from=build /app/dist /public
 
 # CMD ["/app"]
 
-COPY constants.template.tsx /constants.template.tsx
+COPY src/constants.template.tsx /constants.template.tsx
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 

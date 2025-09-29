@@ -89,14 +89,16 @@ jobs:
     secrets: inherit
     
   deploy-test:
-    needs: ["build-frontend", "build-backend", 'deploy-dev']
+    # needs: ["build-frontend", "build-backend", 'deploy-dev']
+    needs: ["build-frontend", "build-backend"]
     uses: ./.github/workflows/deploy.yml
     with:
       environment: test
     secrets: inherit
     
   deploy-prod:
-    needs: ["build-frontend", "build-backend", 'deploy-test']
+    needs: ["build-frontend", "build-backend"]
+    # needs: ["build-frontend", "build-backend", 'deploy-test']
     uses: ./.github/workflows/deploy.yml
     with:
       environment: prod
