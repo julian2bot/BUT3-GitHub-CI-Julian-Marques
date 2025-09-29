@@ -12,7 +12,6 @@ RUN npm run build
 
 FROM ghcr.io/static-web-server/static-web-server:2
 
-WORKDIR /app
 COPY --from=build /app/dist /public
 
 # EXPOSE 80
