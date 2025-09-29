@@ -12,11 +12,11 @@ on:
     secrets:
       SSH:
         required: true
-      DOCKER_PASSWORD:
+      PWD:
         required: true
-      DOCKER_USERNAME:
+      NOM:
         required: true
-      DOCKER_ADRESSE:
+      ADRESSE:
         required: true
 
 jobs:
