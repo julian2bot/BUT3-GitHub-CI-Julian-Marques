@@ -8,6 +8,8 @@ RUN npm install
 
 COPY . .
 
+RUN sed "s/__ENV__/test/g" src/constants.template.tsx > src/constants.tsx
+
 RUN npm run build
 
 FROM nginx:alpine
