@@ -16,7 +16,6 @@ FROM nginx:alpine
 COPY --from=build /app/dist /usr/share/nginx/html
 
 # Copier le template et le script
-COPY src/constants.template.tsx /constants.template.tsx
 COPY src/config.template.json /app/src/config.template.json
 
 COPY entrypoint.sh /entrypoint.sh
