@@ -1,0 +1,48 @@
+# .github/workflows/deploy.yml
+name: Deploy
+
+on:
+  workflow_call:
+    inputs:
+      environment:
+        required: true
+        type: string
+      domain_prefix:
+        required: true
+        type: string
+    secrets:
+      SSH_KEY:
+        required: true
+      SERVER_HOST:
+        required: true
+      SERVER_USER:
+        required: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.environment }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up SSH key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -p 62215 dev15.iut.arcanit.io >> ~/.ssh/known_hosts
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH }}
+
+      - name: Install Ansible
+        run: |
+        
+          pip install ansible
+
+      - name: Run Ansible Playbook
+        run: |
+          cd ansible/ 
+          ansible-playbook deploy.yml \
+            -e "image_tag=${{ github.sha }}" \
+            -e "registry_password=${{ secrets.PWD }}"
