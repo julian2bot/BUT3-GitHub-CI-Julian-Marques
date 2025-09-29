@@ -10,11 +10,15 @@ COPY . .
 
 RUN npm run build
 
-FROM ghcr.io/static-web-server/static-web-server:2
+FROM nginx:alpine
 
-COPY --from=build /app/dist /public
+# Copier le frontend compilé
+COPY --from=build /app/dist /usr/share/nginx/html
 
+# Copier le template et le script
 COPY src/constants.template.tsx /constants.template.tsx
 COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
 
 ENTRYPOINT ["/bin/sh", "/entrypoint.sh"]
+CMD ["nginx", "-g", "daemon off;"]
