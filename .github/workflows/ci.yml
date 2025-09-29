@@ -86,7 +86,6 @@ jobs:
     uses: ./.github/workflows/deploy.yml
     with:
       environment: dev
-      inventory: inventory.dev.ini
     secrets: inherit
     
   deploy-test:
@@ -94,7 +93,6 @@ jobs:
     uses: ./.github/workflows/deploy.yml
     with:
       environment: test
-      inventory: inventory.test.ini
     secrets: inherit
     
   deploy-prod:
@@ -102,5 +100,4 @@ jobs:
     uses: ./.github/workflows/deploy.yml
     with:
       environment: prod
-      inventory: inventory.prod.ini
     secrets: inherit

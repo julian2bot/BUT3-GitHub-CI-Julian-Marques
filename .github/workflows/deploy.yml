@@ -6,9 +6,6 @@ on:
       environment:
         required: true
         type: string
-      inventory:
-        required: true
-        type: string
     secrets:
       SSH:
         required: true
@@ -41,5 +38,5 @@ jobs:
       - name: Lancer le playbook
         run: |
           cd ansible/
-          ansible-playbook -i ${{ inputs.inventory }} deploy.yml \
-            --extra-vars "env=${{ inputs.environment }} image_tag=${{ github.sha }} registry_password=${{ secrets.PWD }}"
+          ansible-playbook -i inventory.ini deploy.yml \
+           --extra-vars "env=${{ inputs.environment }} image_tag=${{ github.sha }} registry_password=${{ secrets.PWD }}"
