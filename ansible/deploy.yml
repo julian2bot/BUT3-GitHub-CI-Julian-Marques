@@ -2,7 +2,7 @@
   hosts: apps
   vars_files:
     - group_vars/apps.yml
-    
+ 
   tasks:
     - name: Créer le dossier pour l'application
       file:
@@ -17,8 +17,10 @@
 
     - name: Copier le fichier docker-compose.yml dans le répertoire de l'application
       copy:
-        src: "docker-compose.yml"
+        src: "docker-compose.yml.j2"
         dest: "{{ app_directory }}/docker-compose.yml"
+      vars:
+        env: "{{ env }}"
 
     - name: Copier le fichier backend.env dans le répertoire de l'application
       copy:
