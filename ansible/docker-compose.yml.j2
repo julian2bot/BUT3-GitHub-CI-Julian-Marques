@@ -18,7 +18,7 @@ services:
     networks: [ traefik ]
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.{{ env }}-julian-marques-backend.rule=Host(`api-julian-marques.iut.arcanit.io`)"
+      - "traefik.http.routers.{{ env }}-julian-marques-backend.rule=Host(`{{ env }}-api-julian-marques.iut.arcanit.io`)"
       - "traefik.http.routers.{{ env }}-julian-marques-backend.entrypoints=https"
       - "traefik.http.routers.{{ env }}-julian-marques-backend.tls=true"
       - "traefik.http.services.{{ env }}-julian-marques-backend.loadbalancer.server.port=80"

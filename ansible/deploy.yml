@@ -16,14 +16,14 @@
         password: "{{ registry_password }}"
 
     - name: Copier le fichier docker-compose.yml dans le répertoire de l'application
-      copy:
+      template:
         src: "docker-compose.yml.j2"
         dest: "{{ app_directory }}/docker-compose.yml"
       vars:
         env: "{{ env }}"
 
     - name: Copier le fichier backend.env dans le répertoire de l'application
-      copy:
+      template:
         src: "backend.env.j2"
         dest: "{{ app_directory }}/backend.env"
       vars:

@@ -1,7 +1,12 @@
-app_directory: /home/student/apps/julian-marques-dev
+app_directory: /home/student/apps/julian-marques-{{ env }}
 
 registry: docker.iut.arcanit.io
 registry_login: admin
 registry_password: secret # This will be overriden from GitHub secrets
 
 image_tag: latest
+
+aspnetcore_env:
+  dev: dev
+  test: test
+  prod: prod
