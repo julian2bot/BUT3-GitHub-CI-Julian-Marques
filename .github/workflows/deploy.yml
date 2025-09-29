@@ -38,4 +38,5 @@ jobs:
       - name: Lancer le playbook
         run: |
           cd ansible/
-<
+          ansible-playbook -i inventory.ini deploy.yml \
+          --extra-vars "env=${{ inputs.environment }} image_tag=${{ github.sha }} registry_password=${{ secrets.PWD }}"
