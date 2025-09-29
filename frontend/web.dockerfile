@@ -17,3 +17,9 @@ COPY --from=build /app/dist /public
 # EXPOSE 80
 
 # CMD ["/app"]
+
+COPY constants.template.tsx /constants.template.tsx
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+ENTRYPOINT ["/entrypoint.sh"]   

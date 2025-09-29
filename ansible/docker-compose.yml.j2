@@ -3,6 +3,8 @@ services:
     container_name: julian-marques-frontend-{{ env }}
     image: docker.iut.arcanit.io/julian-marques-frontend:latest
     restart: always
+    environment:
+      - ENV={{ env }}
     networks: [ traefik ]
     labels:
       - "traefik.enable=true"
