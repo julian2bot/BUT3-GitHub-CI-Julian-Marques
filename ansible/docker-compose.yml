@@ -1,9 +1,9 @@
 services:
   julian-marques-frontend:
-    image: docker.iut.arcanit.io/marques-julian-frontend:latest
     container_name: julian-marques-frontend
+    image: docker.iut.arcanit.io/julian-marques-frontend:latest
     restart: always
-    networks: [traefik]
+    networks: [ traefik ]
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.dev-julian-marques-frontend.rule=Host(`dev-julian-marques.iut.arcanit.io`)"
