@@ -45,5 +45,3 @@ export class Constants {
         return this._config.LASTNAME;
     }
 }
-
-// Constants.loadConfig().catch(console.error);

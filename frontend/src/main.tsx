@@ -8,7 +8,7 @@ const root = createRoot(document.getElementById('root')!);
 
 async function init() {
   try {
-    await Constants.loadConfig(); // charger config avant de rendre App
+    await Constants.loadConfig(); 
     root.render(
       <StrictMode>
         <App />
@@ -16,7 +16,6 @@ async function init() {
     );
   } catch (err) {
     console.error("Failed to load config:", err);
-    // Optionnel : afficher un fallback UI
   }
 }
 
